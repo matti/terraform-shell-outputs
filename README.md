@@ -1,0 +1,3 @@
+# terraform-shell-outputs
+
+WIP
