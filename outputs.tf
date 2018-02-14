@@ -1,5 +1,9 @@
-output "code" {
-  value = "${data.external.shell.result["code"]}"
+output "exit_status" {
+  value = "${data.external.shell.result["exit_status"]}"
+}
+
+output "pid" {
+  value = "${data.external.shell.result["pid"]}"
 }
 
 output "stdout" {
