@@ -1,3 +1,24 @@
+resource "local_file" "test_txt" {
+  content  = "test"
+  filename = "${path.module}/test.txt"
+}
+
+module "shell_depends" {
+  source     = ".."
+  depends_id = "${local_file.test_txt.id}"
+
+  command = "cat ${path.module}/test.txt"
+}
+
+output "values_depends" {
+  value = {
+    stdout      = "${module.shell_depends.stdout}"
+    stderr      = "${module.shell_depends.stderr}"
+    exit_status = "${module.shell_depends.exit_status}"
+    pid         = "${module.shell_depends.pid}"
+  }
+}
+
 module "shell_stderr" {
   source = ".."
 

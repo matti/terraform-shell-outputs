@@ -2,13 +2,7 @@ require "json"
 require "open3"
 params = JSON.parse(STDIN.read)
 
-
-env_keys = params["env_keys"].split(",")
-env_values = params["env_values"].split(",")
-envs = {}
-env_keys.each_with_index do |key, i|
-  envs[key] = env_values.at(i)
-end
+envs = JSON.parse(params["envs"])
 
 spawn_opts = {
   stdin_data: params["stdin"]
